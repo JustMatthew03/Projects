@@ -38,7 +38,7 @@ int main()
         }
         else
         {
-            cout << "Incorrect answer!\n";
+            cout << "Incorrect answer! The correct answer was" << capitals[ran] <<"\n";
         }
 
         if (score >= 5)

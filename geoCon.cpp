@@ -2,11 +2,13 @@
 #include <conio.h>
 #include <stdio.h>
 #include <random>
+#include <string>
 
 using namespace std;
 
 int score;
 int ran;
+int rest;
 string capitals[] = { "London", "Paris", "Moscow", "Madrid", "Abu Dhabi", "Accra", "Amsterdam", "Antananarivo", "Athens", "Bankok", "Cairo", "Canberra", "Podgorica", "Damascus", "Dublin", "Hanoi", "Jakarta", "Kabul", "Kingston", "Kyiv" };
 string countries[] = { "United Kingdom", "France", "Russia", "Spain", "United Arab Emirates", "Ghana", "Netherlands", "Madagascar", "Greece", "Thailand", "Egypt", "Australia", "Montenegro", "Syria", "Ireland", "Vietnam", "Indonesia", "Afghanistan", "Jamaica", "Ukraine" };
 
@@ -27,10 +29,18 @@ int main()
     {
         int max = sizeof(countries) / sizeof(countries[0]);
         ran = rand() % max;
-
+        if (rest != NULL)
+        {
+            while (ran == rest)
+            {
+                ran = rand() % max;
+            }
+        }
+        rest = ran;
         string ans;
         cout << "What is the capital of " << countries[ran] << "?\n";
-        cin >> ans;
+        getline(cin, ans);
+
         if (ans == capitals[ran])
         {
             score++;
@@ -38,7 +48,7 @@ int main()
         }
         else
         {
-            cout << "Incorrect answer! The correct answer was" << capitals[ran] <<"\n";
+            cout << "Incorrect answer!\n";
         }
 
         if (score >= 5)
